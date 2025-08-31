@@ -6,9 +6,9 @@ public class Controlador {
     }
 
     //Listas 
-    ArrayList<Entrenador> EntrenadoresContratados = new ArrayList<>();
-    ArrayList<Rutina> RutinasDisponibles = new ArrayList<>();
-    ArrayList<Miembro> MiembrosInscritos = new ArrayList<>();
+    private ArrayList<Entrenador> EntrenadoresContratados = new ArrayList<>();
+    private ArrayList<Rutina> RutinasDisponibles = new ArrayList<>();
+    private ArrayList<Miembro> MiembrosInscritos = new ArrayList<>();
     
 //Métodos para crear un nuevo objeto
     public String RegistrarEntrenador (String nombre, int edad, int idDelEntrenador){
@@ -30,6 +30,13 @@ public class Controlador {
             }
         }
         MiembrosInscritos.add(miembro);
+
+        int indexaModificar = RutinasDisponibles.indexOf(miembro.getRutina());
+        RutinasDisponibles.get(indexaModificar).setMiembrosAsignados(RutinasDisponibles.get(indexaModificar).getMiembrosAsigandos()+1);
+        
+        int indexaModificar2 = EntrenadoresContratados.indexOf(miembro.getEntrenador());
+        EntrenadoresContratados.get(indexaModificar2).setMiembrosAsignados(EntrenadoresContratados.get(indexaModificar2).getMiembrosAsigandos()+1);
+        miembro.getEntrenador().EntrenadorSobrecargado(miembro.getEntrenador());
         return "Se ha registardo con éxito al nuevo miembro del gym";
     }
 
@@ -53,13 +60,53 @@ public class Controlador {
     public ArrayList<Rutina> MostrarRutinasDisponibles () {
         return RutinasDisponibles;
     }
+
+    public ArrayList<Miembro> MostrarMiembrosActuales () {
+        return MiembrosInscritos;
+    }
+
+    public String EntrenadorFavorito () {
+        int entrenadorFavorito = 0;
+        String entrenadorFavoritoNombre = null;
+        for (Entrenador entrenador : EntrenadoresContratados) {
+            int entrenadoraEvaluar = entrenador.getMiembrosAsigandos();
+            if (entrenadoraEvaluar > entrenadorFavorito) {
+                entrenadorFavorito = entrenadoraEvaluar;
+                entrenadorFavoritoNombre = entrenador.getNombre();
+            }
+        }
+        return ("El entrenador favoriro es: " + entrenadorFavoritoNombre + " con "+ entrenadorFavorito + " miembros asignados");
+    }
+
+    public String RutinaFavorito () {
+        int rutinaFavorita = 0;
+        String rutinaFavoritaNombre = null;
+        for (Rutina rutina : RutinasDisponibles) {
+            int rutinaaEvaluar = rutina.getMiembrosAsigandos();
+            if (rutinaaEvaluar > rutinaFavorita) {
+                rutinaFavorita = rutinaaEvaluar;
+                rutinaFavoritaNombre = rutina.getNombre();
+            }
+        }
+        return ("La rutina favorira es: " + rutinaFavoritaNombre + " con "+ rutinaFavorita + " miembros asignados");
+    }
+
+    public int RutinasEnUso () {
+        int rutinasenFuncionamiento = 0;
+        for (Rutina rutina : RutinasDisponibles){
+            if (rutina.getRutinaActiva() == true) {
+                rutinasenFuncionamiento += 1;
+            }
+        }
+        return rutinasenFuncionamiento;
+    }
 //Métodos para hacer cambios en los datos dentro de las listas
     public void ModificarMiembrosAsigandosEntrenador () {
         for (Miembro miembro : MiembrosInscritos) {
             if (miembro.getEntrenador() != null) {
                 int indexaModificar = EntrenadoresContratados.indexOf(miembro.getEntrenador());
                 EntrenadoresContratados.get(indexaModificar).setMiembrosAsignados(EntrenadoresContratados.get(indexaModificar).getMiembrosAsigandos()+1);
-                break;
+                
             }
         }
     }
@@ -69,7 +116,7 @@ public class Controlador {
             if (miembro.getRutina() != null) {
                 int indexaModificar = RutinasDisponibles.indexOf(miembro.getRutina());
                 RutinasDisponibles.get(indexaModificar).setMiembrosAsignados(RutinasDisponibles.get(indexaModificar).getMiembrosAsigandos()+1);
-                break;
+                
             }
         }
     }

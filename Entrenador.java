@@ -54,7 +54,7 @@ public class Entrenador {
     }
 
     public boolean EntrenadorSobrecargado (Entrenador entrenador){
-        if (entrenador.miembrosAsignados >= 15) {
+        if (entrenador.getMiembrosAsigandos() >= 15) {
 
             entrenador.setSobrecarga(true);
         }

@@ -104,8 +104,6 @@ public class Main {
                     System.out.println("Ingrese el ID de la rutina deseada: ");
                     rutinaMiembro = (datos.nextInt());
                     System.out.println(control.RegistrarMiembro(nombreMiembro, edadMiembro, niveldeMembresiaMiembro, entrenadorMiembro, rutinaMiembro));
-                    control.ModificarMiembrosAsigandosEntrenador();
-                    control.ModificarMiembrosAsigandosRutina();
                     control.ModificarRutinaActiva();
                     control.ReducirVelocidaddeAparicion();
                     System.out.println("-------------------------------------------------------------"); 
@@ -118,32 +116,32 @@ public class Main {
                 break;
 
             case 4:
-            do{
-            do {
+           do {
                 System.out.println("1. Ver entrenadores actuales y sus datos: ");
                 System.out.println("2. Ver rutinas actuales y sus datos: ");
                 System.out.println("3. Ver miembros actuales y sus datos: ");
-                System.out.println("4. Salir: ");
                 System.out.println("Ingrese alguna opción (Del 1 al 4): ");
                 pagina = input.nextInt();
 
-            } while (pagina < 1 || pagina > 4);
+            } while (pagina < 1 || pagina > 3);
             switch (pagina) {
                 case 1:
                     do {
                         System.out.println("1. Ver hoja de datos completa: ");
-                        System.out.println("2. Ver entrenador tiene a su cargo másalumnos: ");
+                        System.out.println("2. Ver entrenador tiene a su cargo más alumnos: ");
                         System.out.println("Ingrese alguna opción (Del 1 al 2): ");
                         pagina = input.nextInt();
 
-                     } while (pagina < 1 || pagina > 4);
+                     } while (pagina < 1 || pagina > 2);
                      switch (pagina) {
                         case 1:
-                            
+                            for (Entrenador entrenador : control.MostrarEntrenadoresDisponibles()) {
+                            System.out.println("ID:  " +entrenador.getIDdelEntrenador() + " Nombre: " + entrenador.getNombre() + " Edad: " + entrenador.getEdad() + " Cantidad de alumnos: " + entrenador.getMiembrosAsigandos() + "\n");
+                            }
                             break;
                      
                         case 2:
-                            
+                            System.out.println(control.EntrenadorFavorito());
                             break;
                      }
                     break;
@@ -151,31 +149,30 @@ public class Main {
                 case 2:
                     do {
                         System.out.println("1. Ver hoja de datos completa: ");
-                        System.out.println("2. Ver entrenador tiene a su cargo másalumnos: ");
+                        System.out.println("2. Ver rutina con más alumnos: ");
                         System.out.println("Ingrese alguna opción (Del 1 al 2): ");
                         pagina = input.nextInt();
 
-                     } while (pagina < 1 || pagina > 4);
+                     } while (pagina < 1 || pagina > 2);
                      switch (pagina) {
                         case 1:
-                            
+                            for (Rutina rutina : control.MostrarRutinasDisponibles()) {
+                            System.out.println(" ID: " + rutina.getNumerodeRutina() + " Nombre: " + rutina.getNombre() + " Cantidad de ejercicios: " + rutina.getCantidadEjercicios() + " Duración: " + rutina.getDuración() + " Alumnos asignados: " + rutina.getMiembrosAsigandos() + "\n");
+                            }
                             break;
                      
                         case 2:
-                            
+                            System.out.println(control.RutinaFavorito());
                             break;
                      }
                     break;
                 
                 case 3:
-                    
-                    break;
-
-                case 4:
-                    System.exit(0);
+                    for (Miembro miembro : control.MostrarMiembrosActuales()) {
+                        System.out.println(" Nombre: " + miembro.getNombre() + " Edad: " + miembro.getEdad() + " Nivel de membresía: " + miembro.getNiveldeMembresia() + " Entrena con: " + miembro.getEntrenador().getNombre() + " Actualmente hace: " + miembro.getRutina().getNombre());
+                    }
                     break;
             }
-            }while (pagina != 4);
                 
                 break;
             case 5:
