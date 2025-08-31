@@ -1,7 +1,7 @@
 public class Rutina {
     private String nombre;
-    private int miembrosAsignados = 0;
-    private boolean rutinaActiva = false; 
+    private int miembrosAsignados;
+    private boolean rutinaActiva; 
     private int numerodeRutina;
     private int cantidadEjercicios;
     private String duracion;
@@ -39,12 +39,28 @@ public class Rutina {
         return duracion;
     }
 
-    public void setRutinaActiva (boolean rutinaActiva){
-        this.rutinaActiva = rutinaActiva;
+    public void setNombre (String nombre){
+        this.nombre = nombre;
     }
 
     public void setMiembrosAsignados (int miembrosAsignados){
         this.miembrosAsignados = miembrosAsignados;
+    }
+
+    public void setRutinaActiva (boolean rutinaActiva){
+        this.rutinaActiva = rutinaActiva;
+    }
+
+    public void setNumerodeRutina (int numerodeRutina){
+        this.numerodeRutina = numerodeRutina;
+    }
+
+    public void setCantidadEjercicios (int cantidadEjercicios){
+        this.cantidadEjercicios = cantidadEjercicios;
+    }
+
+    public void setDuracion (String duracion){
+        this.duracion = duracion;
     }
 
 }

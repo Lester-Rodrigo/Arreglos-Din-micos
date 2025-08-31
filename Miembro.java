@@ -33,6 +33,14 @@ public class Miembro {
         return rutina;
     }
 
+    public void setNombre (String nombre){
+        this.nombre = nombre;
+    }
+
+    public void setEdad (int edad){
+        this.edad = edad;
+    }
+
     public void setNiveldeMembresia (int niveldeMembresia){
         this.niveldeMembresia = niveldeMembresia;
     }
