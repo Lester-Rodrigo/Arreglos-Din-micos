@@ -33,6 +33,7 @@ public class Main {
         System.out.println("5. Salir: ");
         System.out.println("Ingrese alguna opción (Del 1 al 5): ");
         pagina = input.nextInt();
+        System.out.println("-------------------------------------------------------------"); 
 
         } while (pagina < 1 || pagina > 5);
         switch (pagina) {
@@ -87,7 +88,7 @@ public class Main {
                     nombreMiembro = datos.nextLine();
                     System.out.println("Ingrese la edad del nuevo miembro: ");
                     edadMiembro = datos.nextInt();
-                    System.out.println("Ingrese el nivel de membresia del nuevo miembro: ");
+                    System.out.println("Ingrese el nivel de membresia del nuevo miembro (del 1 al 3): ");
                     niveldeMembresiaMiembro=(datos.nextInt());
                     System.out.println("-------------------------------------------------------------"); 
                     for (Entrenador entrenador : control.MostrarEntrenadoresDisponibles()) {
@@ -122,6 +123,7 @@ public class Main {
                 System.out.println("3. Ver miembros actuales y sus datos: ");
                 System.out.println("Ingrese alguna opción (Del 1 al 4): ");
                 pagina = input.nextInt();
+                System.out.println("-------------------------------------------------------------"); 
 
             } while (pagina < 1 || pagina > 3);
             switch (pagina) {
@@ -131,6 +133,7 @@ public class Main {
                         System.out.println("2. Ver entrenador tiene a su cargo más alumnos: ");
                         System.out.println("Ingrese alguna opción (Del 1 al 2): ");
                         pagina = input.nextInt();
+                        System.out.println("-------------------------------------------------------------"); 
 
                      } while (pagina < 1 || pagina > 2);
                      switch (pagina) {
@@ -138,10 +141,14 @@ public class Main {
                             for (Entrenador entrenador : control.MostrarEntrenadoresDisponibles()) {
                             System.out.println("ID:  " +entrenador.getIDdelEntrenador() + " Nombre: " + entrenador.getNombre() + " Edad: " + entrenador.getEdad() + " Cantidad de alumnos: " + entrenador.getMiembrosAsigandos() + "\n");
                             }
+                            control.ReducirVelocidaddeAparicion();
+                    System.out.println("-------------------------------------------------------------"); 
                             break;
                      
                         case 2:
                             System.out.println(control.EntrenadorFavorito());
+                            control.ReducirVelocidaddeAparicion();
+                    System.out.println("-------------------------------------------------------------"); 
                             break;
                      }
                     break;
@@ -152,17 +159,22 @@ public class Main {
                         System.out.println("2. Ver rutina con más alumnos: ");
                         System.out.println("Ingrese alguna opción (Del 1 al 2): ");
                         pagina = input.nextInt();
+                        System.out.println("-------------------------------------------------------------"); 
 
                      } while (pagina < 1 || pagina > 2);
                      switch (pagina) {
                         case 1:
                             for (Rutina rutina : control.MostrarRutinasDisponibles()) {
-                            System.out.println(" ID: " + rutina.getNumerodeRutina() + " Nombre: " + rutina.getNombre() + " Cantidad de ejercicios: " + rutina.getCantidadEjercicios() + " Duración: " + rutina.getDuración() + " Alumnos asignados: " + rutina.getMiembrosAsigandos() + "\n");
+                            System.out.println(" ID: " + rutina.getNumerodeRutina() + " Nombre: " + rutina.getNombre() + " Cantidad de ejercicios: " + rutina.getCantidadEjercicios() + " Duracion: " + rutina.getDuracion() + " Alumnos asignados: " + rutina.getMiembrosAsigandos() + "\n");
                             }
+                            control.ReducirVelocidaddeAparicion();
+                    System.out.println("-------------------------------------------------------------"); 
                             break;
                      
                         case 2:
                             System.out.println(control.RutinaFavorito());
+                            control.ReducirVelocidaddeAparicion();
+                    System.out.println("-------------------------------------------------------------"); 
                             break;
                      }
                     break;
@@ -171,6 +183,8 @@ public class Main {
                     for (Miembro miembro : control.MostrarMiembrosActuales()) {
                         System.out.println(" Nombre: " + miembro.getNombre() + " Edad: " + miembro.getEdad() + " Nivel de membresía: " + miembro.getNiveldeMembresia() + " Entrena con: " + miembro.getEntrenador().getNombre() + " Actualmente hace: " + miembro.getRutina().getNombre());
                     }
+                    control.ReducirVelocidaddeAparicion();
+                    System.out.println("-------------------------------------------------------------");
                     break;
             }
                 

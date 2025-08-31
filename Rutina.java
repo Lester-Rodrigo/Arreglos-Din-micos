@@ -35,7 +35,7 @@ public class Rutina {
         return cantidadEjercicios;
     }
 
-    public String getDuración (){
+    public String getDuracion (){
         return duracion;
     }
 
